@@ -1,0 +1,14 @@
+1. berikut adalah cara insert ke sql untuk menmbahkan filed baru setiap kali post 
+
+BEGIN
+    INSERT INTO dari_uang_keluar (id_ukeluar, tgl_keluar, nisn_siswa, nama_siswa, saldo_keluar) --ini adalah bagian dari filed tujuan pada suatu tabel, tabel dari uangkeluar
+    VALUES (NEW.id_ukeluar, NEW.tgl_keluar, NEW.nisn_siswa, NEW.nama_siswa, NEW.saldo_keluar); -- ini adalah post dari hasil submit dengan value field dari metode submit
+END
+
+
+2. Berikut ini ada lah cara untuk update salahsatu vluae filed dari suatu colom pada tabel
+
+BEGIN
+UPDATE tb_siswa SET saldo = saldo - NEW.saldo_keluar -- ini adalah tabel tujuan dalam hal ini tabel tb_siswa yang akan di update value pada colom saldo, dimana value nama siswa sebagai verifikasi 
+WHERE nama_siswa = NEW.nama_siswa;
+END
